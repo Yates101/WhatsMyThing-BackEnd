@@ -1,0 +1,14 @@
+{
+  "name": "whatsmythingbe",
+  "version": "1.0.0",
+  "description": "Backend MERN API for what's my thing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alec Yates, Daniel Martinez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
