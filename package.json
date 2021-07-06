@@ -9,6 +9,8 @@
   "author": "Alec Yates, Daniel Martinez",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parse": "^0.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2"
   }
 }
