@@ -1,41 +1,39 @@
-let express = require("express");
-let bodyParser = require("body-parse");
-let mongoose = require("mongoose");
+let express = require('express')
+let app = express();
+var port = process.env.PORT || 8080;
+
+// Welcome message
+app.get('/', (req, res) => res.send('Welcome to Express'));
+
+// Launch app to the specified port
+app.listen(port, function() {
+    console.log("Running FirstRest on Port "+ port);
+})
 
 //Import routes
-let apiRoutes = require("./router");
-
-let app = express();
-var port = process.envPORT || 8080;
-
-app.get("/", (req, res) => res.send("Welcome to Express"));
-
-app.listen(port, function () {
-	console.log("Running What'sMyThing on port " + port);
-});
+let apiRoutes = require("./routes")
 
 //Use API routes in the App
-app.use("/api", apiRoutes);
+app.use('/api', apiRoutes)
 
-// Configure bodyPareser to handle post requests
-app.use(
-	bodyParser.urlencoded({
-		extended: true,
-	})
-);
+// //import body parser
+// let bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+//import mongoose
+let mongoose = require('mongoose');
 
-// connect to mongoose
-const dbPath = "mongodb://localhost/firstrest";
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
+//configure bodyparser to hande the post requests
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
+
+//connect to mongoose
+const dbPath = 'mongodb://localhost/firstrest';
+const options = {useNewUrlParser: true, useUnifiedTopology: true}
 const mongo = mongoose.connect(dbPath, options);
-
-mongo.then(
-	() => {
-		console.log(connected);
-	},
-	(error) => {
-		console.log(error, "error");
-	}
-);
+mongo.then(() => {
+    console.log('connected');
+}, error => {
+    console.log(error, 'error');
+})
